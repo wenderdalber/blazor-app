@@ -91,7 +91,7 @@ using TodoList.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\Users\wende\Documents\projects\TodoList\Pages\Todo.razor"
+#line 26 "C:\Users\wende\Documents\projects\TodoList\Pages\Todo.razor"
        
     private IList<TodoItem> todos = new List<TodoItem>();
     private string newTodo;

@@ -2,18 +2,26 @@
 
 <h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
 
-<ul>
+<div class="col-md-2">
+    <ul>
     @foreach (var todo in todos)
-    {
-        <li>
-            <input type="checkbox" @bind="todo.IsDone" />
-            <input @bind="todo.Title" />
-        </li>
-    }
-</ul>
+        {
+            <li>
+                <input type="checkbox" @bind="todo.IsDone" />
+                <input @bind="todo.Title" class="form-control"  />
+            </li>
+        }
+    </ul>
+</div>
 
-<input placeholder="Something todo" @bind="newTodo" />
-<button @onclick="AddTodo">Add todo</button>
+<div class="col-md-6">
+    <div class="form-group">
+                <input placeholder="Something todo" class="form-control" @bind="newTodo" />
+        </div>
+        <div class="form-group">
+                <button @onclick="AddTodo" class="btn btn-success" >Add todo</button>
+        </div>
+</div>
 
 @code {
     private IList<TodoItem> todos = new List<TodoItem>();
