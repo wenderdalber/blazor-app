@@ -1,0 +1,46 @@
+﻿@page "/fetchdata"
+
+@using TodoList.Data
+@inject PersonService PersonService
+
+<h1>Getting Data</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (persons == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Create</th>
+                <th>Time</th>
+                <th>Birthday</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in persons)
+            {
+                <tr>
+                    <td>@person.Date.ToShortDateString()</td>
+                    <td>@person.Age</td>
+                    <td>@person.Birthday.ToShortDateString()</td>
+                    <td>@person.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Person[] persons;
+
+    protected override async Task OnInitializedAsync()
+    {
+        persons = await PersonService.GetForecastAsync(DateTime.Now);
+    }
+}
